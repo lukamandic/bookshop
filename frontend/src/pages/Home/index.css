@@ -1,0 +1,65 @@
+.bookshop-title {
+  margin: 0;
+  font-size: 24px;
+}
+
+.bookshop-cart-button {
+  background-color: #f8f8f8;
+  color: #ffffff;
+  background-color: #000;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.bookshop-cart-button:hover {
+  background-color: #000;
+}
+
+.bookshop-body {
+  display: flex;
+  margin-top: 80px; /* Make room for fixed header */
+  transition: margin-right 0.3s ease;
+  padding: 20px;
+  gap: 20px;
+}
+
+.bookshop-content {
+  flex: 1;
+  transition: flex 0.3s ease, margin-right 0.3s ease;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.bookshop-content.shrink {
+  flex: 0.7; /* Shrinks when the cart is open */
+}
+
+.bookshop-filter {
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.cart-quantity {
+  width: 60px;
+  padding: 5px;
+}
+
+.update-quantity-button,
+.remove-item-button {
+  background-color: #ccc;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.update-quantity-button:hover,
+.remove-item-button:hover {
+  background-color: #bbb;
+}

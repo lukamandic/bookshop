@@ -1,0 +1,50 @@
+.book {
+  display: flex;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
+  align-items: center;
+}
+
+.book-image {
+  width: 100px;
+  height: auto;
+  margin-right: 20px;
+  display: block;
+}
+
+.book-info {
+  flex: 1;
+}
+
+.book-title {
+  font-size: 20px;
+  margin: 0 0 10px 0;
+  font-weight: bold;
+}
+
+.book-description {
+  color: #555;
+  margin: 0 0 10px 0;
+}
+
+.book-price {
+  font-size: 18px;
+  color: #000;
+  margin: 10px 0;
+}
+
+.add-to-cart {
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 20px;
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart:hover {
+  background-color: #ffffff;
+}

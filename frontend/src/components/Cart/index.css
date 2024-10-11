@@ -1,0 +1,18 @@
+.shopping-cart {
+  width: 400px;
+  height: calc(100vh - 125px);
+  margin-top: 80px; /* Align below the header */
+  background-color: #fff;
+  box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  right: -450px; /* Set far off-screen when hidden */
+  transition: right 0.3s ease;
+  overflow-y: auto;
+  z-index: 1001; /* Ensure the cart is above other elements */
+}
+
+.shopping-cart.visible {
+  right: 0; /* Bring into view when visible */
+}
