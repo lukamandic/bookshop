@@ -14,3 +14,8 @@ chmod +x start.sh
 The script will do all of the necessary installations, build of the files and server start.
 
 Or you can start a Docker container like this:
+
+```bash
+docker build -t bookshop -
+docker run -p 8080:8080 --name bookshop-container bookshop
+```
