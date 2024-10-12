@@ -12,3 +12,5 @@ export const Cart = ({ children, isCartVisible }: CartProps) => {
     </div>
   );
 };
+
+export default Cart;

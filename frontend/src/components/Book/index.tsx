@@ -7,9 +7,17 @@ interface BookProps {
   description: string;
   price: number;
   image: string;
+  revision: number;
 }
 
-export const Book = ({ id, title, description, price, image }: BookProps) => {
+export const Book = ({
+  id,
+  title,
+  description,
+  price,
+  image,
+  revision,
+}: BookProps) => {
   const add = useCartStore((state) => state.add);
 
   const handleAddToCart = () => {
@@ -21,6 +29,7 @@ export const Book = ({ id, title, description, price, image }: BookProps) => {
       <img src={image} alt={title} className="book-image" />
       <div className="book-info">
         <h2 className="book-title">{title}</h2>
+        <p>Revisions: {revision}</p>
         <p className="book-description">{description}</p>
         <p className="book-price">Price: ${price}</p>
         <button onClick={() => handleAddToCart()} className="add-to-cart">
@@ -30,3 +39,5 @@ export const Book = ({ id, title, description, price, image }: BookProps) => {
     </div>
   );
 };
+
+export default Book;

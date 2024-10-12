@@ -1,13 +1,8 @@
 import { BooksResponse } from "../../types";
 
-export const fetchBooks = async (
-  title: string,
-  openLibrary: string | null
-): Promise<BooksResponse> => {
+export const fetchBooks = async (title: string): Promise<BooksResponse> => {
   try {
-    const res = await fetch(
-      `http://localhost:8080/books?title=${title}&openLibrary=${openLibrary}`
-    );
+    const res = await fetch(`http://localhost:8080/books?title=${title}`);
     if (!res.ok) {
       throw new Error(`HTTP error! status: ${res.status}`);
     }

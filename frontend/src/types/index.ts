@@ -13,6 +13,7 @@ export interface BookInfo {
   description: string;
   imageLinks: ImageLinks;
   pageCount: number;
+  revision: number;
 }
 
 export interface ImageLinks {

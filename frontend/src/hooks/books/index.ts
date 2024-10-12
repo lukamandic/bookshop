@@ -2,20 +2,15 @@ import { useEffect, useState } from "react";
 import { fetchBooks } from "../../services";
 import { Book } from "../../types";
 import { generateRandomPrice } from "../../util/price";
-import { Location } from "react-router-dom";
 
-export const useGetBooks = (title: string, location: Location) => {
+export const useGetBooks = (title: string) => {
   const [books, setBooks] = useState<Book[]>([]);
   const [titleSearch, setTitleSearch] = useState<string>(title || "nosql");
-  const queryParams = new URLSearchParams(location.search);
-  const openLibrary = queryParams.has("openLibrary")
-    ? queryParams.get("openLibrary")
-    : "false";
 
   useEffect(() => {
     const getBooks = async () => {
       try {
-        const fetchedBooks = await fetchBooks(titleSearch, openLibrary);
+        const fetchedBooks = await fetchBooks(titleSearch);
 
         if (fetchedBooks) {
           fetchedBooks?.items.map((book) => {
@@ -31,7 +26,7 @@ export const useGetBooks = (title: string, location: Location) => {
     if (title) {
       getBooks();
     }
-  }, [title, titleSearch, openLibrary]);
+  }, [title, titleSearch]);
 
   return { books, setTitleSearch };
 };

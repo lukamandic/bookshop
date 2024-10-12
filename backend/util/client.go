@@ -85,7 +85,7 @@ func worker(isbnChan <-chan string, resultsChan chan<-map[string]int, wg *sync.W
 }
 
 func FetchOpenLibraryData(isbn string) int {
-    url := fmt.Sprintf("https://openlibrary.org/api/books?bibkeys=ISBN:%s&jscmd=details&format=json", isbn)
+    url := fmt.Sprintf("http://localhost:3000/isbn=%s", isbn)
     resp, err := http.Get(url)
     if err != nil {
         fmt.Printf("Error fetching data for ISBN %s: %v\n", isbn, err)
@@ -109,9 +109,9 @@ func FetchOpenLibraryData(isbn string) int {
     if len(bookResponse) == 0 {
         return 0
     }
-
+    
     for _, book := range bookResponse {
-        return book.Details.Revision
+        return book
     }
 
     return 0

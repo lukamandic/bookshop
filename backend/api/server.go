@@ -8,7 +8,6 @@ import (
 
 func GetBooksHandler(w http.ResponseWriter, r *http.Request) {
     title := r.URL.Query().Get("title")
-    openLibrary := r.URL.Query().Get("openLibrary")
 
     bookResponse, err := util.FetchBooks(title)
         
@@ -17,14 +16,8 @@ func GetBooksHandler(w http.ResponseWriter, r *http.Request) {
         return
     }
 
-    if openLibrary == "true" {
-        withRevisions := util.FetchBooksAndRevisions(bookResponse)
-        w.Header().Set("Content-Type", "application/json")
-        json.NewEncoder(w).Encode(withRevisions)
-        return
-    }
-
+    withRevisions := util.FetchBooksAndRevisions(bookResponse)
 
     w.Header().Set("Content-Type", "application/json")
-    json.NewEncoder(w).Encode(bookResponse)
+    json.NewEncoder(w).Encode(withRevisions)
 }

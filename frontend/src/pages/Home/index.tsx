@@ -12,10 +12,8 @@ import {
 import { useCartStore } from "../../store";
 import { useGetBooks } from "../../hooks";
 import { Qty } from "../../util/qty";
-import { useLocation } from "react-router-dom";
 
 export const Home = () => {
-  const location = useLocation();
   const cartCount = useCartStore((state) => state.count);
   const cart = useCartStore((state) => state.cart);
   const updateCartItem = useCartStore((state) => state.update);
@@ -23,11 +21,16 @@ export const Home = () => {
   const totalPrice = useCartStore((state) => state.totalPrice);
   const [isCartVisible, setIsCartVisible] = useState(false);
   const [title, setTitle] = useState("nosql");
-  const { books, setTitleSearch } = useGetBooks(title, location);
+  const { books, setTitleSearch } = useGetBooks(title);
   const [quantities, setQuantities] = useState<{ id: string; qty: number }[]>(
     []
   );
   const qty = new Qty(quantities, setQuantities, updateCartItem);
+
+  const removeItem = (id: string) => {
+    qty.removeQuantity(id);
+    removeCartItem(id);
+  };
 
   const toggleCartVisibility = () => {
     setIsCartVisible(!isCartVisible);
@@ -64,6 +67,7 @@ export const Home = () => {
               description={book.volumeInfo.description}
               price={book.volumeInfo.price}
               image={book.volumeInfo.imageLinks.thumbnail}
+              revision={book.volumeInfo.revision}
             />
           ))}
         </div>
@@ -86,7 +90,7 @@ export const Home = () => {
                   Update Quantity
                 </button>
                 <button
-                  onClick={() => removeCartItem(item.id)}
+                  onClick={() => removeItem(item.id)}
                   type="button"
                   className="remove-item-button"
                 >

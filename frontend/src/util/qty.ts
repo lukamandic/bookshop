@@ -15,6 +15,7 @@ interface QtyOps {
   checkError: (id: string) => boolean;
   updateQuanties: (id: string, qty: number) => void;
   updateItemQty: () => void;
+  removeQuantity: (id: string) => void;
 }
 
 export class Qty implements QtyOps {
@@ -34,11 +35,20 @@ export class Qty implements QtyOps {
 
   checkError(id: string) {
     const index = this.quantities.findIndex((item) => item.id === id);
-
+    console.log(this.quantities);
     if (index !== -1)
       return this.quantities[index].qty < 1 || this.quantities[index].qty > 100;
 
     return false;
+  }
+
+  removeQuantity(id: string) {
+    const index = this.quantities.findIndex((item) => item.id === id);
+    if (index !== -1) {
+      this.setQtyFunction((prevQuantities) =>
+        prevQuantities.filter((item) => item.id !== id)
+      );
+    }
   }
 
   updateQuanties(id: string, qty: number) {

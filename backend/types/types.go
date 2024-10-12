@@ -33,13 +33,7 @@ type ImageLinks struct {
 	Thumbnail      string `json:"thumbnail"`
 }
 
-type OpenLibraryResponse map[string]struct {
-	Details BookDetails `json:"details"`
-}
-
-type BookDetails struct {
-	Revision int `json:"revision"`
-}
+type OpenLibraryResponse map[string]int
 
 type BookWithOpenLibraryData struct {
 	Item                Item
